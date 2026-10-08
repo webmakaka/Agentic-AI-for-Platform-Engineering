@@ -1,5 +1,8 @@
 # [Book] Agentic AI for Platform Engineering [ENG, 2026]
 
+**Original src:**  
+https://github.com/PacktPublishing/Agentic-AI-for-Platform-Engineering
+
 Companion code for the book *AI-Driven Platform Engineering*. Every chapter's labs run locally on **one shared kind cluster** you create once, on your own machine — no cloud account required (Amazon EKS works too if you prefer).
 
 ## Start here
