@@ -10,18 +10,20 @@ Companion code for the book *AI-Driven Platform Engineering*. Every chapter's la
 
 
 
-
-
+<br/>
 
 ## Start here
 
 ```bash
-cd 00-cluster-setup
-./setup-cluster.sh   # kind cluster 'agentic-platform' + Metrics Server + ArgoCD
-./verify.sh          # sanity-check the environment
+$ cd 00-cluster-setup
+$ ./setup-cluster.sh   # kind cluster 'agentic-platform' + Metrics Server + ArgoCD
+$ ./verify.sh          # sanity-check the environment
 ```
 
-See [`00-cluster-setup/README.md`](./00-cluster-setup/README.md) for details, EKS notes, and teardown.
+See [`00. Cluster Setup/README.md`](./00. Cluster Setup/README.md) for details, EKS notes, and teardown.
+
+
+<br/>
 
 ## Layout
 
@@ -33,6 +35,8 @@ See [`00-cluster-setup/README.md`](./00-cluster-setup/README.md) for details, EK
 | [`chapter-07/`](./chapter-07/) | 7 — Operational Agents in Production | A production-grade agent that proposes changes through the same GitOps flow |
 | [`chapter-08/`](./chapter-08/) | 8 — Security in Practice | OPA policy enforcement, signed identity propagation, tenant isolation, and security evidence |
 | [`chapter-09/`](./chapter-09/) | 9 — Future Directions | A **living memory graph**: an MCP server over a curated, PR-extensible knowledge graph seeded with the whole book — connect a local agent and extend it over time |
+
+<br/>
 
 ## Conventions across chapters
 
