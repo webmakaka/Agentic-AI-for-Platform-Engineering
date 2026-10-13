@@ -96,7 +96,7 @@ $ uvicorn app.api:app --port 8000
 Ask the question from §4.9:
 
 ```bash
-curl -s -X POST localhost:8000/ask -H 'content-type: application/json' \
+$ curl -s -X POST localhost:8000/ask -H 'content-type: application/json' \
   -d '{"question": "Why does a pod end up in CrashLoopBackOff and how do I fix it?"}' | jq
 ```
 
@@ -116,11 +116,11 @@ With generation enabled you get a grounded answer **plus the exact sources it us
 The `sources` array is the point. This isn't a chatbot guessing — every answer is traceable to a document your platform team owns. Try the other questions too:
 
 ```bash
-curl -s -X POST localhost:8000/ask -H 'content-type: application/json' \
+$ curl -s -X POST localhost:8000/ask -H 'content-type: application/json' \
   -d '{"question": "What are the mandatory labels every workload must have?"}' | jq '.sources'
 # -> blueprints/tagging-and-labels.md
 
-curl -s -X POST localhost:8000/ask -H 'content-type: application/json' \
+$ curl -s -X POST localhost:8000/ask -H 'content-type: application/json' \
   -d '{"question": "What caused the payment processor outage in March?"}' | jq '.sources'
 # -> postmortems/2026-03-payment-processor-outage.md
 ```
@@ -133,8 +133,10 @@ RAG just answered questions from durable, owned knowledge: runbooks, a postmorte
 
 Now ask it: **"Which deployments are unhealthy right now?"** It can't know. Nothing in the corpus describes the current state of your cluster, and even if you'd embedded a snapshot, it would be stale the moment a pod restarted. That's the wall the chapter describes — and exactly the gap [Lab 3](../3-mcp-server/README.md) closes with MCP.
 
+<br/>
+
 ## Cleanup
 
 ```bash
-kubectl delete -f files/pgvector/pgvector.yaml   # removes the rag-demo namespace and PVC
+$ kubectl delete -f files/pgvector/pgvector.yaml   # removes the rag-demo namespace and PVC
 ```
