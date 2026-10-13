@@ -48,6 +48,7 @@ $ pip install -r requirements.txt
 ## Step 3: Ingest the corpus
 
 ```bash
+// OK!
 $ python -m app.ingest
 ```
 
@@ -71,23 +72,25 @@ Done. 18 chunks stored. Re-run any time to refresh.
 Configure generation (optional but recommended). Embeddings are local; *generation* needs one provider:
 
 ```bash
-# Option A — Bedrock (recommended)
-export LLM_PROVIDER=bedrock
-export AWS_REGION=us-east-1
-# (BEDROCK_MODEL_ID defaults to a Claude Sonnet model; override if needed)
+// Option A — Bedrock (recommended)
+$ export LLM_PROVIDER=bedrock
+$ export AWS_REGION=us-east-1
+// (BEDROCK_MODEL_ID defaults to a Claude Sonnet model; override if needed)
 
-# Option B — Anthropic API
-export LLM_PROVIDER=anthropic
-export ANTHROPIC_API_KEY=sk-ant-...
+// Option B — Anthropic API
+$ export LLM_PROVIDER=anthropic
+$ export ANTHROPIC_API_KEY=sk-ant-...
 
-# Option C — no credentials: retrieval-only (you still see the sources)
-export LLM_PROVIDER=none
+// Option C — no credentials: retrieval-only (you still see the sources)
+$ export LLM_PROVIDER=none
 ```
+
+<br/>
 
 Start the API:
 
 ```bash
-uvicorn app.api:app --port 8000
+$ uvicorn app.api:app --port 8000
 ```
 
 Ask the question from §4.9:
