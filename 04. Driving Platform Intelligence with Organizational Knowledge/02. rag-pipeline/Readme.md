@@ -37,7 +37,7 @@ The Service is a NodePort, so it's reachable from your host at `localhost:30900`
 
 ```bash
 $ cd files/rag
-$ python3.11 -m venv .venv && source .venv/bin/activate
+$ python -m venv .venv && source .venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
@@ -48,7 +48,7 @@ $ pip install -r requirements.txt
 ## Step 3: Ingest the corpus
 
 ```bash
-python -m app.ingest
+$ python -m app.ingest
 ```
 
 Expected output:
