@@ -6,29 +6,36 @@ This lab deploys nothing. It confirms your environment is ready for the RAG and 
 
 Chapter 4 runs on the same kind cluster as the rest of the book, but it does **not** need ArgoCD or Backstage (those arrive in Chapter 5). If you haven't created the cluster yet:
 
+<br/>
+
 ```bash
-cd ../../00-cluster-setup
-SKIP_ARGOCD=1 ./setup-cluster.sh
-cd -
+$ cd ../../00-cluster-setup
+$ SKIP_ARGOCD=1 ./setup-cluster.sh
+$ cd -
 ```
 
 Confirm it's reachable:
 
 ```bash
-kubectl cluster-info --context kind-agentic-platform
+$ kubectl cluster-info --context kind-agentic-platform
 ```
 
 Already created the full cluster for Chapter 5/6? That works too — nothing here conflicts.
+
+<br/>
 
 ## 2. Python 3.11+
 
 The RAG pipeline (Lab 2) and the MCP server (Lab 3) are Python. You need Python 3.11 or newer:
 
 ```bash
-python3 --version   # 3.11+
+$ python --version   # 3.11+
 ```
 
 Each lab ships its own `requirements.txt`. We recommend a virtualenv per lab (the labs tell you when).
+
+
+<br/>
 
 ## 3. What runs where
 
@@ -42,6 +49,8 @@ To keep this chapter focused on *concepts* (RAG and MCP) rather than deployment 
 
 No image building, no registry, no `kind load`. Just `kubectl apply` for pgvector and `python` for the rest.
 
+<br/>
+
 ## 4. LLM credentials (generation only)
 
 Embeddings run locally and need no credentials. *Generation* (turning retrieved context into an answer) needs one of:
@@ -51,10 +60,12 @@ Embeddings run locally and need no credentials. *Generation* (turning retrieved 
 
 You can run Lab 2's *ingestion and retrieval* with no LLM credentials at all — the API will return the retrieved context and tell you generation is disabled. You only need credentials to get a synthesized answer.
 
+<br/>
+
 ## You're ready when
 
 - `kubectl cluster-info --context kind-agentic-platform` works.
 - `python3 --version` is 3.11+.
 - You have Bedrock or Anthropic access (or accept retrieval-only mode for now).
 
-Move on to [Lab 1](../1-knowledge-corpus/README.md).
+Move on to [Lab 1](../01. knowledge-corpus/README.md).
