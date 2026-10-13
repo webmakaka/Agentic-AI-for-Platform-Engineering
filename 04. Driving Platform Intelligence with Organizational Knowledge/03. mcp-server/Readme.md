@@ -93,5 +93,5 @@ And notice they compose: MCP tells you `payment-processor` is in CrashLoopBackOf
 ## Cleanup
 
 ```bash
-kubectl delete -f files/broken-app.yaml
+$ kubectl delete -f files/broken-app.yaml
 ```
