@@ -15,26 +15,35 @@ The chapter says every RAG system has six parts. Here's where each one lives:
 | **LLM** | [`app/llm.py`](./files/rag/app/llm.py) — Bedrock Claude or Anthropic |
 | **Orchestration Layer** | [`app/api.py`](./files/rag/app/api.py) — the `/ask` endpoint that ties it together |
 
+
+<br/>
+
 ## Step 1: Deploy the vector store
 
 Postgres-with-pgvector is the only piece that runs in the cluster:
 
+<br/>
+
 ```bash
-kubectl apply -f files/pgvector/pgvector.yaml
-kubectl rollout status deployment/pgvector -n rag-demo --timeout=180s
+$ kubectl apply -f files/pgvector/pgvector.yaml
+$ kubectl rollout status deployment/pgvector -n rag-demo --timeout=180s
 ```
 
 The Service is a NodePort, so it's reachable from your host at `localhost:30900` (mapped by [`00-cluster-setup/kind-config.yaml`](../../00-cluster-setup/kind-config.yaml)). No port-forward needed.
 
+<br/>
+
 ## Step 2: Set up the Python environment
 
 ```bash
-cd files/rag
-python3.11 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+$ cd files/rag
+$ python3.11 -m venv .venv && source .venv/bin/activate
+$ pip install -r requirements.txt
 ```
 
 > First run downloads the local embedding model (`BAAI/bge-small-en-v1.5`, ~100MB) — no cloud credentials required for embeddings.
+
+<br/>
 
 ## Step 3: Ingest the corpus
 
@@ -54,6 +63,8 @@ Done. 18 chunks stored. Re-run any time to refresh.
 ```
 
 `ingest` is idempotent — it drops and rebuilds the table each run, so you can edit the corpus and re-ingest freely. (Dropping the table on each run also means switching embedding providers, which changes the vector dimension, just works.)
+
+<br/>
 
 ## Step 4: Ask questions
 
