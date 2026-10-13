@@ -11,27 +11,32 @@ A FastMCP server ([`app/server.py`](./files/mcp/app/server.py)) exposing one too
 So the server has something interesting to report, deploy a deliberately broken app. It crashes on startup — the exact CrashLoopBackOff the Lab 2 runbook explains:
 
 ```bash
-kubectl apply -f files/broken-app.yaml
-kubectl get pods -n broken-demo -w
+$ kubectl apply -f files/broken-app.yaml
+$ kubectl get pods -n broken-demo -w
 # Wait until STATUS shows CrashLoopBackOff (~30-60s), then Ctrl-C.
 ```
+
+<br/>
 
 ## Step 2: Set up the environment
 
 ```bash
-cd files/mcp
-python3.11 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+$ cd files/mcp
+$ python -m venv .venv && source .venv/bin/activate
+$ pip install -r requirements.txt
 ```
 
 The server reads your **kubeconfig** — the same context `kubectl` uses (`kind-agentic-platform`). No in-cluster deployment, no credentials beyond what `kubectl` already has.
+
+
+<br/>
 
 ## Step 3: Call the tool (no AI host required)
 
 A tiny demo client launches the server over stdio and calls the tool, so you can see it work without Claude Desktop:
 
 ```bash
-python client_demo.py --unhealthy
+$ python client_demo.py --unhealthy
 ```
 
 ```json
@@ -53,6 +58,8 @@ Calling list_deployments({'only_unhealthy': True}) ...
 ```
 
 Drop `--unhealthy` to list every deployment (you'll see ArgoCD, pgvector, etc., all healthy). Fix or delete the broken app and call again — the answer changes immediately. **That's the MCP property: never stale.** A RAG index would still be reporting the old state until you re-embedded.
+
+<br/>
 
 ## Step 4 (optional): Wire it into Claude Desktop / Cursor
 
