@@ -17,7 +17,7 @@ def _default_corpus_dir() -> str:
     # .../chapter-04/2-rag-pipeline/files/rag/app/settings.py
     #   parents[0]=app [1]=rag [2]=files [3]=2-rag-pipeline [4]=chapter-04
     chapter_root = here.parents[4]
-    return str(chapter_root / "1-knowledge-corpus" / "corpus")
+    return str(chapter_root / "01. knowledge-corpus" / "corpus")
 
 
 @dataclass(frozen=True)
