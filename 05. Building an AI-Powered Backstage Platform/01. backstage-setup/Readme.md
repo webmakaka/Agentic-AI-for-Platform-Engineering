@@ -28,6 +28,8 @@ This is the same cluster Chapters 4 and 7 use. Prefer Amazon EKS? See [`00-clust
 
 ### Step 1: Create a New Backstage App
 
+https://github.com/backstage/backstage/releases
+
 > **⚠️ Pin to `@backstage/create-app@0.7.9`.** The labs that follow rely on the legacy frontend system (`<FlatRoutes>` + `Root.tsx` with `<SidebarItem>`). Versions `0.8.x+` scaffold the new frontend system (`createApp({ features: [...] })`), and the Lab 2 / Lab 4 file edits will not apply.
 
 ```bash
