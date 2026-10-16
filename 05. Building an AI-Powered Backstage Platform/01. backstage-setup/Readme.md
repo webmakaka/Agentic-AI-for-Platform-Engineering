@@ -120,9 +120,9 @@ integrations:
 
 ## Part 3: Configure ArgoCD
 
-ArgoCD was already installed on your cluster by [`00-cluster-setup/setup-cluster.sh`](../../00-cluster-setup/README.md) (release `v3.0.21`, in the `argocd` namespace). This part wires it up to your GitHub repository.
+ArgoCD was already installed on your cluster. This part wires it up to your GitHub repository.
 
-> **Note:** If you're using Amazon EKS, you can use the managed [ArgoCD capability](https://docs.aws.amazon.com/eks/latest/userguide/capabilities.html) instead of the manual install.
+<br/>
 
 ### Step 1: Confirm ArgoCD is running
 
@@ -132,11 +132,15 @@ NAME            READY   UP-TO-DATE   AVAILABLE   AGE
 argocd-server   1/1     1            1           29m
 ```
 
+<br/>
+
 ### Step 2: Get Admin Password
 
 ```bash
 $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
+
+<br/>
 
 ### Step 3: Access ArgoCD UI (Optional)
 
@@ -145,6 +149,8 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
 Open https://localhost:8080 (username: `admin`, password from Step 2)
+
+<br/>
 
 ### Step 4: Create ApplicationSet for Auto-Discovery
 
