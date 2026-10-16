@@ -14,10 +14,10 @@ This lab covers creating a Backstage application with GitHub integration, ArgoCD
 If you haven't already, stand up the shared local cluster used by every chapter:
 
 ```bash
-cd ../../00-cluster-setup
-./setup-cluster.sh   # kind cluster 'agentic-platform' + Metrics Server + ArgoCD
-./verify.sh          # sanity-check
-cd -
+$ cd ../../00-cluster-setup
+$ ./setup-cluster.sh   # kind cluster 'agentic-platform' + Metrics Server + ArgoCD
+$ ./verify.sh          # sanity-check
+$ cd -
 ```
 
 This is the same cluster Chapters 4 and 7 use. Prefer Amazon EKS? See [`00-cluster-setup/README.md`](../../00-cluster-setup/README.md) — install Metrics Server and ArgoCD against your own cluster and skip the kind step. The rest of this lab is cluster-agnostic.
@@ -31,11 +31,13 @@ This is the same cluster Chapters 4 and 7 use. Prefer Amazon EKS? See [`00-clust
 > **⚠️ Pin to `@backstage/create-app@0.7.9`.** The labs that follow rely on the legacy frontend system (`<FlatRoutes>` + `Root.tsx` with `<SidebarItem>`). Versions `0.8.x+` scaffold the new frontend system (`createApp({ features: [...] })`), and the Lab 2 / Lab 4 file edits will not apply.
 
 ```bash
-npx @backstage/create-app@0.7.9
+$ npx @backstage/create-app@0.7.9
 
-# When prompted, enter your app name (e.g., "my-backstage-app")
-cd my-backstage-app
+// When prompted, enter your app name (e.g., "my-backstage-app")
+$ cd my-backstage-app
 ```
+
+<br/>
 
 ### Step 2: Pin Backstage package versions
 
@@ -44,23 +46,25 @@ The Backstage ecosystem moves quickly. As of this writing, releases `1.49.0+` de
 To avoid this, pin the entire `@backstage/*` galaxy to release **1.48.0** via `yarn` resolutions. Open the root `package.json` and replace the existing `resolutions` block with the contents of [`files/package-resolutions.json`](./files/package-resolutions.json) — that file ships a coherent snapshot of all 193 `@backstage/*` packages plus the `@langchain/*` pins required by the chat plugin in Lab 2.
 
 ```bash
-# From the root of your Backstage app:
-# 1) open package.json in your editor
-# 2) replace the "resolutions" block with the contents of:
-cat ../ai-driven-platform-engineering/chapter-05/1-backstage-setup/files/package-resolutions.json
-# (or pull it from the book repo and copy in)
+// From the root of your Backstage app:
+// 1) open package.json in your editor
+// 2) replace the "resolutions" block with the contents of:
+$ cat ../ai-driven-platform-engineering/chapter-05/1-backstage-setup/files/package-resolutions.json
+// (or pull it from the book repo and copy in)
 ```
 
 Then install:
 
 ```bash
-yarn install
+$ yarn install
 ```
+
+<br/>
 
 ### Step 3: Verify the Installation
 
 ```bash
-NODE_OPTIONS=--no-node-snapshot yarn start
+$ NODE_OPTIONS=--no-node-snapshot yarn start
 ```
 
 Open `http://localhost:3000` - you should see the Backstage welcome page.
