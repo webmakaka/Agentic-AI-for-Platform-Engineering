@@ -126,21 +126,22 @@ ArgoCD was already installed on your cluster by [`00-cluster-setup/setup-cluster
 
 ### Step 1: Confirm ArgoCD is running
 
-```bash
-kubectl -n argocd get deployment argocd-server
-# If this is missing, run ../../00-cluster-setup/setup-cluster.sh
+```shell
+$ kubectl -n argocd get deployment argocd-server
+NAME            READY   UP-TO-DATE   AVAILABLE   AGE
+argocd-server   1/1     1            1           29m
 ```
 
 ### Step 2: Get Admin Password
 
 ```bash
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+$ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
 ### Step 3: Access ArgoCD UI (Optional)
 
 ```bash
-kubectl port-forward svc/argocd-server -n argocd 8080:443
+$ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
 Open https://localhost:8080 (username: `admin`, password from Step 2)
@@ -158,15 +159,15 @@ kubectl apply -f files/argocd-applicationset.yaml
 If your `backstage-components` repository is private, ArgoCD needs credentials to access it:
 
 ```bash
-# Create a repository secret with your GitHub credentials (replace YOUR_USERNAME and token)
-kubectl create secret generic github-creds -n argocd \
+// Create a repository secret with your GitHub credentials (replace YOUR_USERNAME and token)
+$ kubectl create secret generic github-creds -n argocd \
   --from-literal=type=git \
   --from-literal=url=https://github.com/YOUR_USERNAME/backstage-components \
   --from-literal=username=YOUR_USERNAME \
   --from-literal=password=github_pat_your_token_here
 
-# Label it so ArgoCD recognizes it as a repository secret
-kubectl label secret github-creds -n argocd argocd.argoproj.io/secret-type=repository
+// Label it so ArgoCD recognizes it as a repository secret
+$ kubectl label secret github-creds -n argocd argocd.argoproj.io/secret-type=repository
 ```
 
 > **Tip:** You can reuse the same GitHub token you created for Backstage.
