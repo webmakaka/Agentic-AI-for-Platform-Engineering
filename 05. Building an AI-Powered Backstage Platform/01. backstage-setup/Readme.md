@@ -237,11 +237,15 @@ catalog:
 
 ## Part 5: Test the Complete Flow
 
+<br/>
+
 ### Step 1: Start Backstage
 
 ```bash
 $ NODE_OPTIONS=--no-node-snapshot yarn start
 ```
+
+<br/>
 
 ### Step 2: Create a New Web App
 
@@ -257,6 +261,8 @@ $ NODE_OPTIONS=--no-node-snapshot yarn start
    - **Repository Name:** `backstage-components` (or the repository name you created earlier)
 5. Click "Create"
 
+<br/>
+
 ### Step 3: Merge the Pull Request
 
 1. Go to your GitHub repository
@@ -269,16 +275,25 @@ $ NODE_OPTIONS=--no-node-snapshot yarn start
 ```bash
 // Check ArgoCD applications (may take a few minutes to appear)
 $ kubectl get applications -n argocd
+NAME           SYNC STATUS   HEALTH STATUS
+my-first-app   Unknown       Healthy
+```
 
+<br/>
+
+```shell
 // Watch the deployment once the application is created
 $ kubectl get pods -n my-first-app -w
 ```
 
 You can also monitor progress in the ArgoCD UI:
+
 ```bash
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 Then open https://localhost:8080 (username: `admin`, password from Part 3 Step 2).
+
+<br/>
 
 ### Step 5: Access the Application
 
