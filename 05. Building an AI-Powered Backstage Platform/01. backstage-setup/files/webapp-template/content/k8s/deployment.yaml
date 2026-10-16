@@ -19,7 +19,8 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: public.ecr.aws/nginx/nginx:alpine
+        # image: public.ecr.aws/nginx/nginx:alpine
+        image: nginx/nginx:alpine
         ports:
         - containerPort: 80
         resources:
