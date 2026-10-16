@@ -261,6 +261,17 @@ $ NODE_OPTIONS=--no-node-snapshot yarn start
    - **Repository Name:** `backstage-components` (or the repository name you created earlier)
 5. Click "Create"
 
+
+<br/>
+
+<img src="../../img/pic05-01.png" alt="Agentic AI for Platform Engineering">
+
+
+<br/>
+
+<img src="../../img/pic05-02.png" alt="Agentic AI for Platform Engineering">
+
+
 <br/>
 
 ### Step 3: Merge the Pull Request
