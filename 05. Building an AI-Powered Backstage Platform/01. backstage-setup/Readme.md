@@ -162,6 +162,8 @@ Edit the file `files/argocd-applicationset.yaml` and replace `YOUR_USERNAME` wit
 $ kubectl apply -f files/argocd-applicationset.yaml
 ```
 
+<br/>
+
 ### Step 5: Configure GitHub Credentials (Required for Private Repos)
 
 If your `backstage-components` repository is private, ArgoCD needs credentials to access it:
