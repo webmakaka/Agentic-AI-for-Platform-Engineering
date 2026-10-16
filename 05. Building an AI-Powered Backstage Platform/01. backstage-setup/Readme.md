@@ -151,7 +151,7 @@ Open https://localhost:8080 (username: `admin`, password from Step 2)
 Edit the file `files/argocd-applicationset.yaml` and replace `YOUR_USERNAME` with your GitHub username to reflect the GitHub repository you just created and then apply:
 
 ```bash
-kubectl apply -f files/argocd-applicationset.yaml
+$ kubectl apply -f files/argocd-applicationset.yaml
 ```
 
 ### Step 5: Configure GitHub Credentials (Required for Private Repos)
@@ -181,7 +181,7 @@ $ kubectl label secret github-creds -n argocd argocd.argoproj.io/secret-type=rep
 Copy the `files/webapp-template/` folder to your Backstage app's `examples/` directory:
 
 ```bash
-cp -r files/webapp-template/ /path/to/my-backstage-app/examples/webapp-template/
+$ cp -r files/webapp-template/ /path/to/my-backstage-app/examples/webapp-template/
 ```
 
 Your Backstage app should now have:
@@ -234,7 +234,7 @@ catalog:
 ### Step 1: Start Backstage
 
 ```bash
-NODE_OPTIONS=--no-node-snapshot yarn start
+$ NODE_OPTIONS=--no-node-snapshot yarn start
 ```
 
 ### Step 2: Create a New Web App
@@ -261,23 +261,23 @@ NODE_OPTIONS=--no-node-snapshot yarn start
 > **Note:** ArgoCD's ApplicationSet controller polls for changes every 3 minutes by default. After merging the PR, it may take up to 3 minutes for the application to appear.
 
 ```bash
-# Check ArgoCD applications (may take a few minutes to appear)
-kubectl get applications -n argocd
+// Check ArgoCD applications (may take a few minutes to appear)
+$ kubectl get applications -n argocd
 
-# Watch the deployment once the application is created
-kubectl get pods -n my-first-app -w
+// Watch the deployment once the application is created
+$ kubectl get pods -n my-first-app -w
 ```
 
 You can also monitor progress in the ArgoCD UI:
 ```bash
-kubectl port-forward svc/argocd-server -n argocd 8080:443
+$ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 Then open https://localhost:8080 (username: `admin`, password from Part 3 Step 2).
 
 ### Step 5: Access the Application
 
 ```bash
-kubectl port-forward svc/my-first-app 8080:80 -n my-first-app
+$ kubectl port-forward svc/my-first-app 8080:80 -n my-first-app
 ```
 
 Open http://localhost:8080 to see your deployed application!
